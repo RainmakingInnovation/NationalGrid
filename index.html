@@ -494,12 +494,16 @@
         display: none;
       }
 
+      #button-18 {
+        display: none;
+      }
+
       #button-16 .knobs:before {
         content: "Year";
         position: absolute;
         top: 4px;
         left: 4px;
-        width: 60px;
+        width: 80px;
         height: 10px;
         color: #fff;
         font-size: 10px;
@@ -519,7 +523,27 @@
         position: absolute;
         top: 4px;
         left: 4px;
-        width: 60px;
+        width: 80px;
+        height: 10px;
+        color: #fff;
+        font-size: 10px;
+        font-family: "Graphik Regular";
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+        padding: 9px 4px;
+        background-color: #5fbdfb;
+        border-radius: 2px;
+        transition: 0.8s ease all,
+          left 0.8s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+      }
+
+      #button-18 .knobs:before {
+        content: "Focus Area";
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 80px;
         height: 10px;
         color: #fff;
         font-size: 10px;
@@ -536,18 +560,28 @@
 
       #button-17 .checkbox:checked + .knobs:before {
         content: "Africa";
-        left: 56px;
+        left: 36px;
         background-color: #ea3b66;
       }
 
+      #button-18 .checkbox:checked + .knobs:before {
+        content: "Innovation Area";
+        left: 36px;
+        background-color: #ea3b66;
+      }
+
+      #button-18 .checkbox:active + .knobs:before,
       #button-17 .checkbox:active + .knobs:before,
       #button-16 .checkbox:active + .knobs:before {
         width: 46px;
       }
 
+      #button-18
+        .checkbox:checked:active
+        + .knobs:before,
       #button-17
         .checkbox:checked:active
-        + .knobs:before
+        + .knobs:before,
         #button-16
         .checkbox:checked:active
         + .knobs:before {
@@ -556,10 +590,11 @@
 
       #button-16 .checkbox:checked + .knobs:before {
         content: "Maturity";
-        left: 56px;
+        left: 36px;
         background-color: #ea3b66;
       }
 
+      #button-18 .checkbox:checked ~ .layer,
       #button-17 .checkbox:checked ~ .layer,
       #button-16 .checkbox:checked ~ .layer {
         background-color: #fcebeb;
@@ -1439,6 +1474,11 @@
           <div class="knobs"></div>
           <div class="layer"></div>
         </div>
+        <div class="button b2" id="button-18">
+          <input type="checkbox" class="checkbox" />
+          <div class="knobs"></div>
+          <div class="layer"></div>
+        </div>
 
         <div class="dropdown-client">
           <button class="dropbtn">
@@ -1623,6 +1663,7 @@
 
             spinner.stop();
             d3.select("#button-16").style("display", "block");
+            d3.select("#button-18").style("display", "block");
             //d3.select("#button-17").style("display", "block")
             //d3.select(".dropdown-client").style("display", "inline-block");
             d3.select("#save-button").style("display", "block");
@@ -4017,7 +4058,9 @@
                     update_visibility();
                   }
                 });
-
+                d3.select("#button-18").on("change", function () {
+                  setTimeout(function() { window.location = "https://rainmakinginnovation.github.io/NationalGridFocus/" }, 1000);
+                });
                 d3.select("#button-16").on("change", function () {
                   switchRadial();
                 });
